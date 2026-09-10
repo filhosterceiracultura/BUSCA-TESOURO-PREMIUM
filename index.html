@@ -1,177 +1,597 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Entre Mundos — O Grande Quiz Cultural</title>
-  <meta name="theme-color" content="#010817" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="canonical" href="https://filhosterceiracultura.github.io/ENTRE-MUNDOS-PREMIUM/" />
-  <meta property="og:title" content="Entre Mundos — O Grande Quiz Cultural" />
-  <meta property="og:description" content="Conhecendo o mundo. Compreendendo culturas." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://filhosterceiracultura.github.io/ENTRE-MUNDOS-PREMIUM/" />
-  <meta property="og:image" content="https://filhosterceiracultura.github.io/ENTRE-MUNDOS-PREMIUM/entre-mundos-compartilhamento.jpg" />
-  <meta property="og:image:secure_url" content="https://filhosterceiracultura.github.io/ENTRE-MUNDOS-PREMIUM/entre-mundos-compartilhamento.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Entre Mundos — O Grande Quiz Cultural" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Entre Mundos — O Grande Quiz Cultural" />
-  <meta name="twitter:description" content="Conhecendo o mundo. Compreendendo culturas." />
-  <meta name="twitter:image" content="https://filhosterceiracultura.github.io/ENTRE-MUNDOS-PREMIUM/entre-mundos-compartilhamento.jpg" />
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" name="viewport"/>
+<title>Caça ao Tesouro das Escrituras — Premium 2027</title>
+<meta name="description" content="Uma jornada para descobrir os tesouros da Palavra de Deus."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Caça ao Tesouro das Escrituras — Premium 2027"/>
+<meta property="og:description" content="Uma jornada para descobrir os tesouros da Palavra de Deus."/>
+<meta property="og:image" content="https://filhosterceiracultura.github.io/BUSCA-TESOURO-PREMIUM/img/premium-2027-compartilhamento.png"/>
+<meta property="og:image:alt" content="Caça ao Tesouro das Escrituras — Premium 2027"/>
+<meta property="og:url" content="https://filhosterceiracultura.github.io/BUSCA-TESOURO-PREMIUM/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Caça ao Tesouro das Escrituras — Premium 2027"/>
+<meta name="twitter:description" content="Uma jornada para descobrir os tesouros da Palavra de Deus."/>
+<meta name="twitter:image" content="https://filhosterceiracultura.github.io/BUSCA-TESOURO-PREMIUM/img/premium-2027-compartilhamento.png"/>
+<link rel="icon" type="image/png" href="img/premium-2027-compartilhamento.png"/>
+<style>
+:root{--navy:#03152f;--navy2:#082b59;--gold:#d9ad3d;--gold2:#f2d578;--white:#fff;--danger:#812828}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--navy);font-family:Georgia,"Times New Roman",serif;color:white}
+button,input{font:inherit}
+.screen{position:fixed;inset:0;display:none;overflow:hidden;background:#03152f}
+.screen.active{display:flex}
+.screen.image-screen.active{display:block}
+.safe{padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+.bg{position:absolute;inset:0;background-position:center;background-repeat:no-repeat;background-size:cover}
+.bg-contain{background-size:contain;background-color:#03152f}
+.overlay{position:absolute;inset:0;background:linear-gradient(rgba(3,21,47,.08),rgba(3,21,47,.42))}
+.card{position:relative;z-index:2;width:min(92vw,430px);max-height:calc(100dvh - 24px);margin:auto;padding:20px;border:2px solid var(--gold);border-radius:22px;background:linear-gradient(150deg,rgba(3,21,47,.97),rgba(8,43,89,.96));box-shadow:0 18px 48px rgba(0,0,0,.48);overflow:hidden}
+h1,h2,p{margin-top:0}
+h1{font-size:clamp(28px,8vw,39px);line-height:1.03;text-align:center;color:var(--gold2)}
+h2{font-size:clamp(22px,6vw,30px);text-align:center;color:var(--gold2)}
+.btn{width:100%;min-height:50px;padding:11px 14px;border:1px solid var(--gold);border-radius:14px;background:linear-gradient(#e6c257,#b78c26);color:#07162e;font-weight:900}
+.btn.secondary{background:#163761;color:white}
+.btn.danger{background:#792626;color:white}
+.btn:active,.choice:active,.phase-btn:active{transform:scale(.98)}
+input{width:100%;min-height:54px;margin:6px 0;padding:13px 15px;border-radius:13px;border:1px solid var(--gold);background:white;color:#10254a;font-size:18px}
+.error{min-height:20px;color:#ffb4b4;text-align:center;font-weight:700;margin:5px 0 7px}
+.actions{display:grid;gap:8px}
+.two{grid-template-columns:1fr 1fr}
+
+/* 1. Capa azul */
+#cover .bg{background-image:url("img/tela_01.png")}
+.cover-button{position:absolute;left:50%;bottom:17.5%;transform:translateX(-50%);width:min(76vw,330px);height:66px;border:0;background:transparent;z-index:5}
+.maintenance-zone{position:absolute;left:34%;right:34%;top:2%;height:18%;z-index:5}
+
+/* 2. Login */
+#login{align-items:center;justify-content:center}
+#login .bg{background-image:url("img/tela_02.png")}
+#login .card{padding:24px 20px}
+#login p{text-align:center;line-height:1.35;color:#dbe7f7}
+
+/* 3. Mensagem professora */
+#welcome{align-items:center;justify-content:center;background:linear-gradient(160deg,#03152f,#082b59)}
+#welcome .card{height:calc(100dvh - 20px);display:flex;flex-direction:column;justify-content:center;padding:16px}
+.player-name{font-size:clamp(20px,6vw,27px);text-align:center;color:var(--gold2);font-weight:900;margin-bottom:5px}
+.message{font-size:clamp(13px,3.65vw,16.5px);line-height:1.27}
+.message p{margin:0 0 8px}
+.signature{text-align:center}
+#welcome .actions{grid-template-columns:1fr 1fr}
+#welcome .btn{min-height:44px;font-size:13px;padding:8px}
+
+/* 4. Capa do jogo */
+#intro .bg{background-image:url("img/tela_03.png")}
+.intro-button{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(82vw,350px);z-index:5}
+
+/* 5. Regras */
+#rules{align-items:center;justify-content:center}
+#rules .bg{background-image:url("img/tela_04.png")}
+#rules .card{padding:18px}
+.rules-list{margin:0 0 12px;padding-left:20px;font-size:14.5px;line-height:1.32}
+.rules-list li{margin:7px 0}
+
+/* 6. Fases */
+#phases{flex-direction:column}
+#phases .bg{background-image:url("img/tela_05.png")}
+.player-bar{position:relative;z-index:2;width:min(92vw,430px);margin:0 auto 8px;padding:9px 12px;border:1px solid var(--gold);border-radius:13px;background:rgba(2,16,38,.90);text-align:center;color:var(--gold2);font-size:14px;font-weight:900}
+.phase-list{position:relative;z-index:2;width:min(92vw,430px);flex:1;min-height:0;margin:auto;display:grid;grid-template-rows:repeat(3,1fr);gap:9px}
+.phase-btn{border:2px solid var(--gold);border-radius:20px;background:rgba(4,32,67,.84);color:white;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.phase-btn.locked{opacity:.65;filter:grayscale(.6)}
+.phase-name{font-size:clamp(22px,6.5vw,29px);color:var(--gold2);font-weight:900;line-height:1}
+.phase-sub{font-size:14px;margin-top:6px}
+.phase-state{font-size:12px;margin-top:5px}
+.phase-exit{position:relative;z-index:2;width:min(92vw,430px);margin:9px auto 0}
+
+/* 7/9/11. Jogo */
+#game{flex-direction:column}
+#game.phase-facil .bg{background-image:url("img/tela_06.png")}
+#game.phase-medio .bg{background-image:url("img/tela_07.png")}
+#game.phase-dificil .bg{background-image:url("img/tela_08.png")}
+.hud{position:relative;z-index:2;width:min(96vw,520px);margin:0 auto 6px;padding:7px 9px;border:1px solid var(--gold);border-radius:13px;background:rgba(2,16,38,.92);display:grid;grid-template-columns:1fr 1fr;gap:3px 7px;font-size:12px}
+.hud-name{grid-column:1/-1;color:var(--gold2);font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.question-card{position:relative;z-index:2;width:min(96vw,520px);flex:1;min-height:0;margin:auto;padding:11px;border:2px solid var(--gold);border-radius:18px;background:linear-gradient(150deg,rgba(3,21,47,.97),rgba(8,43,89,.96));display:flex;flex-direction:column;overflow:hidden}
+.question{margin:0 0 7px;font-size:clamp(19px,5.3vw,26px);line-height:1.12;text-align:center;color:white;max-height:24vh;overflow:hidden}
+.options{flex:1;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:6px}
+.choice{min-height:0;border:1px solid var(--gold);border-radius:13px;background:rgba(255,255,255,.96);color:#10254a;padding:7px 9px;text-align:left;font-size:clamp(14px,3.9vw,17px);line-height:1.16;display:flex;align-items:center}
+.choice.correct{background:#d9f4e5;border-color:#3ba96d}
+.choice.wrong{background:#ffd8d8;border-color:#cf4a4a}
+.choice:disabled{opacity:1}
+.hint{display:none;margin:6px 0 0;padding:7px;border:1px dashed var(--gold);border-radius:10px;text-align:center;font-size:13px}
+.feedback{min-height:18px;margin:4px 0;text-align:center;font-size:13px;font-weight:900}
+.game-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.game-actions .btn{min-height:40px;font-size:12px;padding:7px}
+.game-actions .exit{grid-column:1/-1;min-height:35px}
+
+/* 8/10. Parabéns fase */
+#phaseResult{align-items:center;justify-content:center}
+#phaseResult .bg{background-image:url("img/tela_09.png")}
+#phaseResult p{text-align:center;line-height:1.35;font-size:17px}
+
+/* 12. Final */
+#final{align-items:center;justify-content:center}
+#final .bg{background-image:url("img/tela_10.png")}
+.final-card{padding:15px}
+.trophy{font-size:36px;text-align:center}
+.final-name{font-size:22px;color:var(--gold2);font-weight:900;text-align:center;margin:4px 0 8px}
+.final-message{font-size:clamp(13px,3.55vw,15.5px);line-height:1.26}
+.final-message p{margin:0 0 7px}
+.verse{border:1px solid var(--gold);border-radius:12px;padding:8px;text-align:center;margin:7px 0}
+.credits{margin-top:7px;text-align:center;color:#cbd8e9;font-size:10px;line-height:1.2}
+
+/* manutenção */
+#maintenance{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(0,8,24,.88)}
+#maintenance.open{display:flex}
+.modal{width:min(94vw,390px);padding:20px;border:2px solid var(--gold);border-radius:20px;background:linear-gradient(150deg,#061938,#0b2c58);text-align:center}
+</style>
+<style id="ajuste-botoes-mobile-v2">
+/* Primeira capa: área clicável alinhada ao botão visível */
+.cover-button{
+  left:50% !important;
+  bottom:12.5% !important;
+  transform:translateX(-50%) !important;
+  width:min(88vw,380px) !important;
+  height:92px !important;
+  z-index:20 !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+}
+
+/* Evita qualquer deslocamento visual ao tocar */
+.cover-button:active{
+  transform:translateX(-50%) !important;
+}
+
+/* Capa do jogo: botão INICIAR permanece fixo */
+.intro-button{
+  left:50% !important;
+  bottom:max(18px,env(safe-area-inset-bottom)) !important;
+  transform:translateX(-50%) !important;
+  width:min(82vw,350px) !important;
+  transition:none !important;
+  animation:none !important;
+  touch-action:manipulation !important;
+}
+
+.intro-button:active,
+.intro-button:focus,
+.intro-button:hover{
+  transform:translateX(-50%) !important;
+  left:50% !important;
+}
+
+/* Remove o efeito global de scale do botão INICIAR */
+#intro .btn:active{
+  transform:translateX(-50%) !important;
+}
+</style>
+<style id="fases-verticais-clicaveis">
+#phases {
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  background: #03152f !important;
+}
+
+#phases .phase-stage {
+  position: relative;
+  height: 100dvh;
+  max-height: 100dvh;
+  aspect-ratio: 2 / 3;
+  width: auto;
+  max-width: 100vw;
+  overflow: hidden;
+  background: #03152f;
+}
+
+#phases .phase-art {
+  position: absolute;
+  inset: 0;
+  background-image: url("img/tela_11.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.phase-player-overlay {
+  position: absolute;
+  top: 1.7%;
+  left: 27%;
+  width: 46%;
+  height: 4.2%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(2, 16, 38, .92);
+  color: #f2d578;
+  font-weight: 900;
+  font-size: clamp(12px, 3.3vw, 18px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.hotspot-fase,
+.hotspot-sair {
+  position: absolute;
+  z-index: 8;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hotspot-fase:active,
+.hotspot-sair:active {
+  background: rgba(255, 215, 100, .08);
+}
+
+.hotspot-fase-1 {
+  left: 13.5%;
+  top: 29.2%;
+  width: 23.2%;
+  height: 50.5%;
+}
+
+.hotspot-fase-2 {
+  left: 38.4%;
+  top: 29.2%;
+  width: 23.2%;
+  height: 50.5%;
+}
+
+.hotspot-fase-3 {
+  left: 63.3%;
+  top: 29.2%;
+  width: 23.2%;
+  height: 50.5%;
+}
+
+.hotspot-sair {
+  left: 31.6%;
+  bottom: 2.2%;
+  width: 36.8%;
+  height: 7.1%;
+}
+
+.phase-status-overlay {
+  position: absolute;
+  z-index: 7;
+  width: 19%;
+  min-height: 3.2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: rgba(2, 16, 38, .78);
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(9px, 2.5vw, 13px);
+  text-align: center;
+  pointer-events: none;
+}
+
+.phase-status-1 { left: 15.6%; top: 61.9%; }
+.phase-status-2 { left: 40.5%; top: 61.9%; }
+.phase-status-3 { left: 65.4%; top: 61.9%; }
+
+@media (max-aspect-ratio: 2/3) {
+  #phases .phase-stage {
+    width: 100vw;
+    height: auto;
+    max-height: 100dvh;
+  }
+}
+</style><style id="tela-final-vitoria-mobile">
+#final {
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #020d1f !important;
+}
+
+#final .victory-art {
+  position: absolute;
+  inset: 0;
+  background-image: url("img/tela_12.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #020d1f;
+}
+
+/* Cobre o nome fixo presente na arte e mostra o nome real do jogador */
+.victory-player-name {
+  position: absolute;
+  z-index: 8;
+  left: 21.5%;
+  top: 28.4%;
+  width: 57%;
+  height: 6.8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border: 2px solid #f1c452;
+  border-radius: 12px;
+  background: linear-gradient(#e9c459, #b47d17);
+  box-shadow: 0 0 18px rgba(255,206,77,.85), inset 0 0 9px rgba(255,255,255,.35);
+  color: #101010;
+  font-size: clamp(20px, 6.4vw, 38px);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.victory-hotspot {
+  position: absolute;
+  z-index: 10;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.victory-hotspot:active {
+  background: rgba(255, 215, 90, .10);
+}
+
+.victory-finish {
+  left: 18%;
+  top: 84.9%;
+  width: 64%;
+  height: 7.3%;
+}
+
+.victory-exit {
+  left: 32%;
+  top: 92.4%;
+  width: 36%;
+  height: 4.7%;
+}
+</style></head>
 <body>
-  <main id="app">
-    <section id="tela-inicio" class="tela ativa">
-      <div class="capa">
-        <div class="capa-brilho"></div>
-        <div class="capa-conteudo">
-          <div class="selo">Jornada FTC</div>
-          <h1>Entre Mundos</h1>
-          <h2>O Grande Quiz Cultural</h2>
-          <p>Explore culturas, países, descobertas, comidas, histórias e perrengues do mundo.</p>
-          <button class="botao botao-ouro botao-grande" id="btn-iniciar">▶ INICIAR JORNADA</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="tela-menu" class="tela">
-      <div class="card central">
-      <button class="botao botao-ouro" id="btn-entrar-jogo">🌍 Entrar no Jogo</button>
-        <button class="botao botao-azul" id="btn-regras">📋 Regras do Jogo</button>
-        <button class="botao botao-vermelho" id="btn-sair">✕ Sair</button>
-      </div>
-    </section>
-
-    <section id="tela-categorias" class="tela">
-      <div class="topo">
-        <div><strong id="nome-jogador-atual">Jogador</strong></div>
-        <div id="info-rodada">Escolha uma categoria</div>
-      </div>
-      <div class="conteudo">
-        <h2>Escolha uma categoria</h2>
-        <div id="grade-categorias" class="grade-categorias"></div>
-      </div>
-    </section>
-
-    <section id="tela-jogo" class="tela">
-      <div class="topo jogo-topo">
-        <div>
-          <strong id="hud-jogador">Jogador</strong>
-          <span id="hud-pontos">0 pts</span>
-        </div>
-        <div class="timer" id="timer">5:00</div>
-        <div>
-          <strong id="hud-categoria">Categoria</strong>
-          <span id="hud-acertos">✅ 0 ❌ 0</span>
-        </div>
-      </div>
-
-      <div class="pergunta-card">
-        <div id="pergunta-numero" class="pergunta-numero">Pergunta 1</div>
-        <h2 id="pergunta-texto">Carregando...</h2>
-      </div>
-
-      <div id="opcoes" class="opcoes"></div>
-
-     <div class="controles">
-  <button class="botao botao-azul" id="btn-dica">💡 Dica <span id="dicas-restantes">(2)</span></button>
-  <button class="botao botao-neutro" id="btn-trocar">🔄 Mudar Categoria</button>
-  <button class="botao botao-vermelho" id="btn-sair-jogo">🏠 Sair para o Menu</button>
+<section class="screen image-screen active" id="cover" onclick="openLogin()">
+<div class="bg bg-contain"></div>
+<div class="maintenance-zone" id="maintenanceTap"></div>
+<button aria-label="Iniciar Jornada" class="cover-button" onclick="openLogin()"></button>
+</section>
+<section class="screen safe" id="login">
+<div class="bg"></div><div class="overlay"></div>
+<div class="card">
+<h1 id="loginTitle">Cadastro do Jogador</h1>
+<p id="loginText">Informe seu nome e sobrenome para personalizar a jornada.</p>
+<div id="nameGroup"><input autocomplete="name" id="nameInput" placeholder="Nome e sobrenome" type="text"/></div>
+<input autocomplete="off" id="passwordInput" inputmode="numeric" placeholder="Senha de acesso" type="password"/>
+<div class="error" id="loginError"></div>
+<div class="actions">
+<button class="btn" onclick="login()">Entrar</button>
+<button class="btn secondary" onclick="show('cover')">Voltar</button>
 </div>
+</div>
+</section>
+<section class="screen safe" id="welcome">
+<div class="card">
+<div class="player-name" id="welcomeName"></div>
+<h1>Bem-vindo à Jornada!</h1>
+<div class="message">
+<p>Ser estudante é ter sede de aprender. No Ensino Médio, a rotina de estudos é puxada, mas hoje o convite é diferente: usar o conhecimento como um verdadeiro escudo e guia.</p>
+<p>A Bíblia ensina que a sabedoria vale mais do que qualquer conquista passageira. Cada fase deste jogo é uma oportunidade para testar sua memória, aprofundar seu entendimento e descobrir que o conhecimento bíblico transforma a nossa forma de ver o mundo.</p>
+<p>Hoje, quero celebrar o seu empenho e sua busca constante por aprender. Desfrute dessa experiência, divirta-se e mergulhe em histórias e verdades que atravessam gerações.</p>
+<p class="signature"><strong>Feliz Dia do Estudante!</strong><br/>Prof. Rosilene S. Moraes Cavalcanti</p>
+</div>
+<div class="actions two">
+<button class="btn" onclick="show('intro')">Continuar Jornada</button>
+<button class="btn secondary" onclick="show('cover')">Voltar</button>
+</div>
+</div>
+</section>
+<section class="screen image-screen" id="intro">
+<div class="bg bg-contain"></div>
+<button class="btn intro-button" onclick="show('rules')">INICIAR</button>
+</section>
+<section class="screen safe" id="rules">
+<div class="bg"></div><div class="overlay"></div>
+<div class="card">
+<h1>Regras do Jogo</h1>
+<ol class="rules-list">
+<li>Complete cada fase para desbloquear a próxima.</li>
+<li>Cada pergunta tem 4 alternativas e apenas 1 correta.</li>
+<li>A dica mostra o livro, capítulo e versículo onde está a resposta.</li>
+<li>Cada fase possui 50 perguntas.</li>
+<li>Conclua a fase para desbloquear a próxima etapa.</li>
+</ol>
+<div class="actions">
+<button class="btn" onclick="openPhases()">Escolher Fase</button>
+<button class="btn secondary" onclick="show('intro')">Voltar</button>
+</div>
+</div>
+</section>
+<section class="screen safe" id="phases"><div class="phase-stage"><div class="phase-art"></div><div class="phase-player-overlay" id="phasePlayer"></div><button aria-label="Abrir Fase 1" class="hotspot-fase hotspot-fase-1" onclick="tocarPortal('facil')" type="button"></button><button aria-label="Abrir Fase 2" class="hotspot-fase hotspot-fase-2" onclick="tocarPortal('medio')" type="button"></button><button aria-label="Abrir Fase 3" class="hotspot-fase hotspot-fase-3" onclick="tocarPortal('dificil')" type="button"></button><div class="phase-status-overlay phase-status-1" id="stateFacil"></div><div class="phase-status-overlay phase-status-2" id="stateMedio"></div><div class="phase-status-overlay phase-status-3" id="stateDificil"></div><button aria-label="Sair do jogo" class="hotspot-sair" onclick="show('cover')" type="button"></button></div></section>
+<section class="screen safe phase-facil" id="game">
+<div class="bg"></div><div class="overlay"></div>
+<div class="hud">
+<div class="hud-name" id="hudName"></div>
+<div id="hudPhase"></div><div id="hudProgress"></div>
+<div id="hudScore"></div><div id="hudTime"></div>
+</div>
+<div class="question-card">
+<h2 class="question" id="questionText"></h2>
+<div class="options" id="options"></div>
+<div class="hint" id="hint"></div>
+<div class="feedback" id="feedback"></div>
+<div class="game-actions">
+<button class="btn secondary" id="hintBtn" onclick="useHint()">Ver dica bíblica</button>
+<button class="btn" disabled="" id="nextBtn" onclick="nextQuestion()">Próxima</button>
+<button class="btn danger exit" onclick="exitPhase()">Sair da fase</button>
+</div>
+</div>
+</section>
+<section class="screen safe" id="phaseResult">
+<div class="bg"></div><div class="overlay"></div>
+<div class="card">
+<h1 id="phaseResultTitle">Parabéns!</h1>
+<p id="phaseResultText"></p>
+<div class="actions">
+<button class="btn" onclick="openPhases()">Continuar</button>
+<button class="btn secondary" onclick="show('cover')">Sair</button>
+</div>
+</div>
+</section>
+<section class="screen safe" id="final"><div class="victory-art"></div><div class="victory-player-name" id="finalName"></div><button aria-label="Finalizar Jornada" class="victory-hotspot victory-finish" onclick="playAgain()" type="button"></button><button aria-label="Sair do jogo" class="victory-hotspot victory-exit" onclick="show('cover')" type="button"></button></section>
+<div id="maintenance">
+<div class="modal">
+<h2>Acesso restrito</h2>
+<input id="maintenancePassword" inputmode="numeric" placeholder="Senha" type="password"/>
+<div class="error" id="maintenanceError"></div>
+<button class="btn" onclick="maintenanceLogin()">Entrar</button>
+<button class="btn secondary" onclick="closeMaintenance()" style="margin-top:8px">Cancelar</button>
+<div id="maintenanceActions" style="display:none;margin-top:10px">
+<button class="btn danger" onclick="clearDevice()">Limpar cadastro deste aparelho</button>
+</div>
+</div>
+</div>
+<script>
+const QUESTIONS = {"facil": [{"pergunta": "Quem foi o primeiro homem criado por Deus?", "opcoes": ["Noé", "Adão", "Abraão", "Sete"], "correta": 1, "dica": "Gênesis 2:7"}, {"pergunta": "Quem construiu a arca para sobreviver ao dilúvio?", "opcoes": ["Abraão", "Moisés", "Noé", "Ló"], "correta": 2, "dica": "Gênesis 6:14"}, {"pergunta": "Quem abriu o Mar Vermelho pela ordem de Deus?", "opcoes": ["Josué", "Arão", "Moisés", "Elias"], "correta": 2, "dica": "Êxodo 14:21"}, {"pergunta": "Quem derrotou o gigante Golias?", "opcoes": ["Saul", "Davi", "Samuel", "Jônatas"], "correta": 1, "dica": "1 Samuel 17:49"}, {"pergunta": "Quem foi lançado na cova dos leões?", "opcoes": ["Jeremias", "Daniel", "Ezequiel", "Neemias"], "correta": 1, "dica": "Daniel 6:16"}, {"pergunta": "Quem foi engolido por um grande peixe?", "opcoes": ["Joel", "Amós", "Jonas", "Miqueias"], "correta": 2, "dica": "Jonas 1:17"}, {"pergunta": "Em qual cidade Jesus nasceu?", "opcoes": ["Nazaré", "Cafarnaum", "Jerusalém", "Belém"], "correta": 3, "dica": "Lucas 2:4-7"}, {"pergunta": "Quem era a mãe de Jesus?", "opcoes": ["Isabel", "Marta", "Maria", "Ana"], "correta": 2, "dica": "Lucas 1:30-31"}, {"pergunta": "Qual discípulo andou sobre as águas em direção a Jesus?", "opcoes": ["João", "Pedro", "André", "Tiago"], "correta": 1, "dica": "Mateus 14:29"}, {"pergunta": "Quem traiu Jesus por trinta moedas de prata?", "opcoes": ["Pedro", "Tomé", "Judas Iscariotes", "Mateus"], "correta": 2, "dica": "Mateus 26:15"}, {"pergunta": "Quem recebeu os Dez Mandamentos de Deus?", "opcoes": ["Josué", "Arão", "Moisés", "Samuel"], "correta": 2, "dica": "Êxodo 20:1"}, {"pergunta": "Quem foi vendido como escravo pelos próprios irmãos?", "opcoes": ["José", "Benjamim", "Rúben", "Judá"], "correta": 0, "dica": "Gênesis 37:28"}, {"pergunta": "Quem liderou a queda dos muros de Jericó?", "opcoes": ["Gideão", "Josué", "Davi", "Calebe"], "correta": 1, "dica": "Josué 6:20"}, {"pergunta": "Quem foi o homem mais forte da Bíblia?", "opcoes": ["Saul", "Sansão", "Davi", "Elias"], "correta": 1, "dica": "Juízes 16:17"}, {"pergunta": "Quem interpretou os sonhos do faraó?", "opcoes": ["Daniel", "José", "Moisés", "Arão"], "correta": 1, "dica": "Gênesis 41:25"}, {"pergunta": "Quem construiu o primeiro templo em Jerusalém?", "opcoes": ["Davi", "Salomão", "Roboão", "Ezequias"], "correta": 1, "dica": "1 Reis 6:1"}, {"pergunta": "Quem desafiou os profetas de Baal no Monte Carmelo?", "opcoes": ["Eliseu", "Isaías", "Elias", "Jeremias"], "correta": 2, "dica": "1 Reis 18:24"}, {"pergunta": "Qual discípulo negou Jesus três vezes?", "opcoes": ["João", "Pedro", "Tomé", "André"], "correta": 1, "dica": "Mateus 26:75"}, {"pergunta": "Quem batizou Jesus?", "opcoes": ["Pedro", "João Batista", "Tiago", "André"], "correta": 1, "dica": "Mateus 3:13"}, {"pergunta": "Quem viu uma sarça ardente que não se consumia?", "opcoes": ["Abraão", "Moisés", "Josué", "Elias"], "correta": 1, "dica": "Êxodo 3:2"}, {"pergunta": "Quem foi o pai de Isaque?", "opcoes": ["Jacó", "Abraão", "Esaú", "Noé"], "correta": 1, "dica": "Gênesis 21:3"}, {"pergunta": "Quem foi lançado numa fornalha ardente junto com seus amigos?", "opcoes": ["Daniel", "Sadraque", "Neemias", "Ezequiel"], "correta": 1, "dica": "Daniel 3:23"}, {"pergunta": "Quem subiu numa figueira para ver Jesus?", "opcoes": ["Nicodemos", "Bartimeu", "Zaqueu", "Mateus"], "correta": 2, "dica": "Lucas 19:4"}, {"pergunta": "Quem foi o primeiro rei de Israel?", "opcoes": ["Davi", "Saul", "Salomão", "Samuel"], "correta": 1, "dica": "1 Samuel 10:24"}, {"pergunta": "Quem escreveu muitos dos Salmos?", "opcoes": ["Salomão", "Asafe", "Davi", "Moisés"], "correta": 2, "dica": "Salmo 23:1"}, {"pergunta": "Quem era o irmão de Moisés?", "opcoes": ["Josué", "Arão", "Calebe", "Eli"], "correta": 1, "dica": "Êxodo 4:14"}, {"pergunta": "Quem foi o primeiro mártir cristão?", "opcoes": ["Pedro", "Paulo", "Estêvão", "Barnabé"], "correta": 2, "dica": "Atos 7:59"}, {"pergunta": "Quem era o pai de João Batista?", "opcoes": ["Zacarias", "Simeão", "Eli", "Gamaliel"], "correta": 0, "dica": "Lucas 1:13"}, {"pergunta": "Quem escreveu o livro do Apocalipse?", "opcoes": ["Pedro", "Paulo", "João", "Tiago"], "correta": 2, "dica": "Apocalipse 1:1"}, {"pergunta": "Qual era a profissão de Pedro antes de seguir Jesus?", "opcoes": ["Carpinteiro", "Pastor", "Pescador", "Cobrador de impostos"], "correta": 2, "dica": "Mateus 4:18"}, {"pergunta": "Quem foi a esposa de Abraão?", "opcoes": ["Rebeca", "Raquel", "Sara", "Lia"], "correta": 2, "dica": "Gênesis 17:15"}, {"pergunta": "Quem foi o filho prometido a Abraão e Sara?", "opcoes": ["Ismael", "Isaque", "Esaú", "Jacó"], "correta": 1, "dica": "Gênesis 21:2"}, {"pergunta": "Quem sonhou com uma escada que chegava ao céu?", "opcoes": ["José", "Jacó", "Moisés", "Samuel"], "correta": 1, "dica": "Gênesis 28:12"}, {"pergunta": "Quem derrotou mil homens usando uma queixada de jumento?", "opcoes": ["Gideão", "Sansão", "Davi", "Saul"], "correta": 1, "dica": "Juízes 15:15"}, {"pergunta": "Quem ouviu Deus chamando seu nome ainda criança?", "opcoes": ["Samuel", "Davi", "Josias", "Timóteo"], "correta": 0, "dica": "1 Samuel 3:10"}, {"pergunta": "Quem foi jogado numa cova pelos irmãos?", "opcoes": ["José", "Benjamim", "Davi", "Isaque"], "correta": 0, "dica": "Gênesis 37:24"}, {"pergunta": "Quem ajudou Jesus a carregar a cruz?", "opcoes": ["Bartimeu", "Simão Cireneu", "José de Arimateia", "Nicodemos"], "correta": 1, "dica": "Lucas 23:26"}, {"pergunta": "Quem era o discípulo conhecido como cobrador de impostos?", "opcoes": ["João", "Mateus", "André", "Filipe"], "correta": 1, "dica": "Mateus 9:9"}, {"pergunta": "Quem foi o primeiro homem a entrar na arca?", "opcoes": ["Sem", "Cam", "Noé", "Jafé"], "correta": 2, "dica": "Gênesis 7:7"}, {"pergunta": "Quem alimentou uma multidão com cinco pães e dois peixes?", "opcoes": ["Pedro", "André", "Jesus", "João"], "correta": 2, "dica": "Mateus 14:19"}, {"pergunta": "Quantos discípulos Jesus escolheu?", "opcoes": ["10", "11", "12", "70"], "correta": 2, "dica": "Mateus 10:1-2"}, {"pergunta": "Quem era o irmão de Pedro?", "opcoes": ["Tiago", "João", "André", "Filipe"], "correta": 2, "dica": "Mateus 4:18"}, {"pergunta": "Quem foi o primeiro homem a construir um altar ao Senhor após sair da arca?", "opcoes": ["Abraão", "Noé", "Sem", "Enoque"], "correta": 1, "dica": "Gênesis 8:20"}, {"pergunta": "Quem foi o homem mais sábio da Bíblia?", "opcoes": ["Davi", "Salomão", "Samuel", "Ezequias"], "correta": 1, "dica": "1 Reis 3:12"}, {"pergunta": "Quem conduziu o povo de Israel na travessia do rio Jordão para entrar na Terra Prometida?", "opcoes": ["Moisés", "Calebe", "Josué", "Arão"], "correta": 2, "dica": "Josué 3:7-17"}, {"pergunta": "Quem viu Jesus ressuscitado primeiro entre as mulheres?", "opcoes": ["Marta", "Maria Madalena", "Salomé", "Joana"], "correta": 1, "dica": "João 20:18"}, {"pergunta": "Quem foi lançado na prisão por anunciar Jesus e cantou louvores durante a noite?", "opcoes": ["Pedro e João", "Paulo e Silas", "Barnabé e Marcos", "Filipe e Timóteo"], "correta": 1, "dica": "Atos 16:25"}, {"pergunta": "Quem foi escolhido para liderar Israel após a morte de Moisés?", "opcoes": ["Arão", "Calebe", "Josué", "Samuel"], "correta": 2, "dica": "Josué 1:2"}, {"pergunta": "Quem escreveu muitos dos provérbios?", "opcoes": ["Davi", "Salomão", "Asafe", "Jeremias"], "correta": 1, "dica": "Provérbios 1:1"}, {"pergunta": "Em qual rio Jesus foi batizado?", "opcoes": ["Nilo", "Jordão", "Eufrates", "Quisom"], "correta": 1, "dica": "Mateus 3:13"}], "medio": [{"pergunta": "Em qual monte a arca de Noé repousou após o dilúvio?", "opcoes": ["Sinai", "Carmelo", "Ararate", "Moriá"], "correta": 2, "dica": "Gênesis 8:4"}, {"pergunta": "Quem foi escolhido para substituir Judas Iscariotes entre os doze apóstolos?", "opcoes": ["Barnabé", "Matias", "Silas", "Timóteo"], "correta": 1, "dica": "Atos 1:26"}, {"pergunta": "Qual era o nome da esposa de Isaque?", "opcoes": ["Raquel", "Lia", "Rebeca", "Sara"], "correta": 2, "dica": "Gênesis 24:67"}, {"pergunta": "Quantos dias Jesus jejuou no deserto antes de iniciar seu ministério?", "opcoes": ["7 dias", "21 dias", "30 dias", "40 dias"], "correta": 3, "dica": "Mateus 4:2"}, {"pergunta": "Quem derrubou o altar de Baal pertencente ao seu pai?", "opcoes": ["Samuel", "Gideão", "Davi", "Jefté"], "correta": 1, "dica": "Juízes 6:25-29"}, {"pergunta": "Qual discípulo disse: \"Senhor, para quem iremos? Tu tens as palavras da vida eterna\"?", "opcoes": ["João", "André", "Pedro", "Filipe"], "correta": 2, "dica": "João 6:68"}, {"pergunta": "O que Jônatas e seu escudeiro derrotaram quando confiaram no Senhor?", "opcoes": ["Um gigante filisteu", "O exército egípcio", "Uma guarnição dos filisteus", "Os amalequitas"], "correta": 2, "dica": "1 Samuel 14:6-14"}, {"pergunta": "Quem é tradicionalmente reconhecido como autor do livro de Lamentações?", "opcoes": ["Isaías", "Jeremias", "Ezequiel", "Daniel"], "correta": 1, "dica": "Lamentações 1:1 O capítulo não diz isso"}, {"pergunta": "Em qual cidade os discípulos foram chamados cristãos pela primeira vez?", "opcoes": ["Jerusalém", "Éfeso", "Antioquia", "Roma"], "correta": 2, "dica": "Atos 11:26"}, {"pergunta": "Qual rei pediu sabedoria a Deus em vez de riquezas?", "opcoes": ["Davi", "Ezequias", "Salomão", "Asa"], "correta": 2, "dica": "1 Reis 3:9-12"}, {"pergunta": "Quem foi o primeiro rei ungido por Samuel?", "opcoes": ["Davi", "Saul", "Salomão", "Isbosete"], "correta": 1, "dica": "1 Samuel 10:1-12"}, {"pergunta": "Em qual cidade Lázaro morava com Marta e Maria?", "opcoes": ["Nazaré", "Betânia", "Cafarnaum", "Jericó"], "correta": 1, "dica": "João 11:1"}, {"pergunta": "Quem escreveu a maior parte das cartas do Novo Testamento?", "opcoes": ["Pedro", "João", "Paulo", "Tiago"], "correta": 2, "dica": "Romanos 1:1"}, {"pergunta": "Qual foi o primeiro milagre realizado por Jesus?", "opcoes": ["Multiplicação dos pães", "Cura do cego", "Transformar água em vinho", "Acalmar a tempestade"], "correta": 2, "dica": "João 2:11"}, {"pergunta": "Quem sucedeu Moisés como líder de Israel?", "opcoes": ["Calebe", "Arão", "Josué", "Samuel"], "correta": 2, "dica": "Josué 1:1-2"}, {"pergunta": "Quem foi lançado na cova dos leões por continuar orando a Deus?", "opcoes": ["Jeremias", "Daniel", "Neemias", "Esdras"], "correta": 1, "dica": "Daniel 6:1 -16"}, {"pergunta": "Qual discípulo apresentou o menino com cinco pães e dois peixes a Jesus?", "opcoes": ["Pedro", "Filipe", "André", "João"], "correta": 2, "dica": "João 6:8-9"}, {"pergunta": "Qual foi a profissão de Lucas antes de acompanhar Paulo?", "opcoes": ["Pescador", "Médico", "Escriba", "Carpinteiro"], "correta": 1, "dica": "Colossenses 4:14"}, {"pergunta": "Qual profeta foi levado ao céu em um redemoinho?", "opcoes": ["Eliseu", "Elias", "Isaías", "Jeremias"], "correta": 1, "dica": "2 Reis 2:11"}, {"pergunta": "Quem foi o discípulo que pediu para ver as marcas dos cravos antes de acreditar na ressurreição de Jesus?", "opcoes": ["Filipe", "Tomé", "Bartolomeu", "André"], "correta": 1, "dica": "João 20:25"}, {"pergunta": "Quem foi o pai de João, um dos doze apóstolos?", "opcoes": ["Zebedeu", "Alfeu", "Jonas", "Clopas"], "correta": 0, "dica": "Mateus 4:21"}, {"pergunta": "Qual foi a primeira praga enviada ao Egito?", "opcoes": ["Rãs", "Piolhos", "Água transformada em sangue", "Moscas"], "correta": 2, "dica": "Êxodo 7:20"}, {"pergunta": "Quem pediu a Jesus que curasse seu servo?", "opcoes": ["Jairo", "O centurião", "Bartimeu", "Nicodemos"], "correta": 1, "dica": "Mateus 8:5-13"}, {"pergunta": "Qual profeta foi alimentado por corvos durante um período de seca?", "opcoes": ["Eliseu", "Elias", "Isaías", "Jeremias"], "correta": 1, "dica": "1 Reis 17:1-6"}, {"pergunta": "Quem encontrou Moisés ainda bebê no rio Nilo?", "opcoes": ["A esposa do faraó", "A filha do faraó", "Miriã", "Joquebede"], "correta": 1, "dica": "Êxodo 2:5"}, {"pergunta": "Qual discípulo disse a Jesus: \"Senhor, mostra-nos o Pai, e isso nos basta\"?", "opcoes": ["Tomé", "Filipe", "André", "Mateus"], "correta": 1, "dica": "João 14:8"}, {"pergunta": "Quem ajudou os espias israelitas em Jericó?", "opcoes": ["Débora", "Raabe", "Rute", "Abigail"], "correta": 1, "dica": "Josué 2:3-4"}, {"pergunta": "Quem interpretou os sonhos do copeiro e do padeiro no Egito?", "opcoes": ["Daniel", "José", "Moisés", "Jacó"], "correta": 1, "dica": "Gênesis 40:8"}, {"pergunta": "Qual discípulo era conhecido como \"o discípulo amado\"?", "opcoes": ["Pedro", "João", "Tiago", "Mateus"], "correta": 1, "dica": "João 13:23"}, {"pergunta": "Quem pediu para ver Jesus durante a festa da Páscoa?", "opcoes": ["Romanos", "Gregos", "Egípcios", "Samaritanos"], "correta": 1, "dica": "João 12:20-21"}, {"pergunta": "Qual juiz derrotou os midianitas com apenas 300 homens?", "opcoes": ["Sansão", "Jefté", "Gideão", "Otniel"], "correta": 2, "dica": "Juízes 7:7"}, {"pergunta": "Quem escreveu os cinco primeiros livros da Bíblia?", "opcoes": ["Abraão", "Samuel", "Moisés", "Josué"], "correta": 2, "dica": "Deuteronômio 31:24"}, {"pergunta": "Qual rainha visitou Salomão para provar sua sabedoria?", "opcoes": ["Ester", "Jezabel", "Rainha de Sabá", "Vasti"], "correta": 2, "dica": "1 Reis 10:1"}, {"pergunta": "Quem foi o pai de Salomão?", "opcoes": ["Saul", "Samuel", "Davi", "Jessé"], "correta": 2, "dica": "2 Samuel 12:24"}, {"pergunta": "Em qual ilha João recebeu a revelação do Apocalipse?", "opcoes": ["Malta", "Chipre", "Patmos", "Creta"], "correta": 2, "dica": "Apocalipse 1:9"}, {"pergunta": "Qual mulher tornou-se rainha da Pérsia após Vasti?", "opcoes": ["Débora", "Rute", "Ester", "Abigail"], "correta": 2, "dica": "Ester 2:17"}, {"pergunta": "Quem pediu o corpo de Jesus para sepultá-lo?", "opcoes": ["Nicodemos", "José de Arimateia", "Gamaliel", "Simão Cireneu"], "correta": 1, "dica": "Mateus 27:57-58"}, {"pergunta": "Quem foi o pai de Davi?", "opcoes": ["Saul", "Jessé", "Obede", "Boaz"], "correta": 1, "dica": "1 Samuel 16:1"}, {"pergunta": "Quando os anjos do Senhor chegaram a Sodoma para retirar Ló e sua família antes da destruição da cidade, onde Ló estava e o que ele fez?", "opcoes": ["Dormia e os anjos o acordaram às pressas.", "Assentado à porta da cidade.", "Pecando no meio da praça e ignorou os anjos.", "Pescando às margens do Mar Morto."], "correta": 1, "dica": "Gênesis 19:1"}, {"pergunta": "Quem era o comandante do exército de Síria que foi curado da lepra?", "opcoes": ["Hamã", "Naamã", "Senaqueribe", "Ben-Hadade"], "correta": 1, "dica": "2 Reis 5:14"}, {"pergunta": "Qual discípulo cortou a orelha do servo do sumo sacerdote quando Jesus foi preso?", "opcoes": ["João", "Pedro", "Tiago", "André"], "correta": 1, "dica": "João 18:10"}, {"pergunta": "Qual era o nome do servo que teve a orelha cortada por Pedro?", "opcoes": ["Malco", "Bartimeu", "Elcana", "Simão"], "correta": 0, "dica": "João 18:10"}, {"pergunta": "Quem escreveu no chão quando os acusadores trouxeram a mulher apanhada em adultério?", "opcoes": ["Pedro", "João", "Jesus", "Tiago"], "correta": 2, "dica": "João 8:6"}, {"pergunta": "Qual discípulo levou Natanael até Jesus?", "opcoes": ["Filipe", "Pedro", "André", "Mateus"], "correta": 0, "dica": "João 1:45-46"}, {"pergunta": "Quem foi lançado ao mar para que a tempestade cessasse?", "opcoes": ["Paulo", "Jonas", "Pedro", "Elias"], "correta": 1, "dica": "Jonas 1:15"}, {"pergunta": "Qual rei promoveu uma grande reforma em Judá depois que o Livro da Lei foi encontrado no templo?", "opcoes": ["Asa", "Ezequias", "Josias", "Manassés"], "correta": 2, "dica": "2 Reis 22:8-13"}, {"pergunta": "Qual livro da Bíblia narra a reconstrução dos muros de Jerusalém?", "opcoes": ["Esdras", "Neemias", "Ester", "Ageu"], "correta": 1, "dica": "Neemias 2:17"}, {"pergunta": "Quem declarou ao povo: \"Escolhei hoje a quem sirvais\"?", "opcoes": ["Moisés", "Samuel", "Josué", "Davi"], "correta": 2, "dica": "Josué 24:15"}, {"pergunta": "Qual rei autorizou o retorno dos judeus do exílio e a reconstrução do templo em Jerusalém?", "opcoes": ["Dario", "Ciro", "Artaxerxes", "Xerxes"], "correta": 1, "dica": "Esdras 1:2-3"}, {"pergunta": "Qual foi a primeira cidade da Europa onde Paulo anunciou o evangelho e estabeleceu uma igreja?", "opcoes": ["Atenas", "Corinto", "Filipos", "Tessalônica"], "correta": 2, "dica": "Atos 16:12-15"}], "dificil": [{"pergunta": "Qual profetisa foi consultada após a descoberta do Livro da Lei nos dias de Josias?", "opcoes": ["Débora", "Hulda", "Miriã", "Ana"], "correta": 1, "dica": "2 Reis 22:14"}, {"pergunta": "Qual sacerdote permaneceu fiel a Davi quando Abiatar apoiou Adonias?", "opcoes": ["Fineias", "Hilquias", "Zadoque", "Eli"], "correta": 2, "dica": "1 Reis 1:39"}, {"pergunta": "Quem matou Eglom, rei de Moabe?", "opcoes": ["Jefté", "Gideão", "Eúde", "Otniel"], "correta": 2, "dica": "Juízes 3:21"}, {"pergunta": "Quem sustentou Davi durante a fuga de Absalão?", "opcoes": ["Husai", "Joabe", "Barzilai", "Abiatar"], "correta": 2, "dica": "2 Samuel 17:27"}, {"pergunta": "Qual rei viu uma mão escrever na parede?", "opcoes": ["Nabucodonosor", "Dario", "Belsazar", "Ciro"], "correta": 2, "dica": "Daniel 5:2"}, {"pergunta": "Quem foi mestre de Paulo em Jerusalém?", "opcoes": ["Nicodemos", "Caifás", "Gamaliel", "Ananias"], "correta": 2, "dica": "Atos 22:3"}, {"pergunta": "Quem viu um vale cheio de ossos secos?", "opcoes": ["Jeremias", "Daniel", "Ezequiel", "Ageu"], "correta": 2, "dica": "Ezequiel 37:1"}, {"pergunta": "Qual profeta viu um rolo voando?", "opcoes": ["Joel", "Amós", "Zacarias", "Ageu"], "correta": 2, "dica": "Zacarias 5:1"}, {"pergunta": "Quem caiu da janela durante uma longa pregação de Paulo?", "opcoes": ["Trófimo", "Tito", "Êutico", "Silas"], "correta": 2, "dica": "Atos 20:9"}, {"pergunta": "Quem recebeu o apelido de 'Filho da Consolação'?", "opcoes": ["Marcos", "Silas", "Barnabé", "Timóteo"], "correta": 2, "dica": "Atos 4:36"}, {"pergunta": "Quem pediu uma porção dobrada do espírito de Elias?", "opcoes": ["Natã", "Eliseu", "Joel", "Ageu"], "correta": 1, "dica": "2 Reis 2:9"}, {"pergunta": "Quem interpretou a escrita na parede para Belsazar?", "opcoes": ["Neemias", "Esdras", "Daniel", "Jeremias"], "correta": 2, "dica": "Daniel 5:25"}, {"pergunta": "Qual mulher impediu Davi de cometer vingança contra Nabal?", "opcoes": ["Mical", "Abigail", "Tamar", "Bate-Seba"], "correta": 1, "dica": "1 Samuel 25:32"}, {"pergunta": "Quem era o pai de Mefibosete?", "opcoes": ["Saul", "Abner", "Jônatas", "Isbosete"], "correta": 2, "dica": "2 Samuel 4:4"}, {"pergunta": "Qual rei recebeu mais quinze anos de vida?", "opcoes": ["Asa", "Ezequias", "Manassés", "Acaz"], "correta": 1, "dica": "2 Reis 20:5,6"}, {"pergunta": "Quem encontrou o Livro da Lei no templo?", "opcoes": ["Safã", "Hilquias", "Jeremias", "Esdras"], "correta": 1, "dica": "2 Reis 22:8"}, {"pergunta": "Quem ensinou Apolo mais precisamente no caminho do Senhor?", "opcoes": ["Pedro e João", "Paulo e Silas", "Priscila e Áquila", "Barnabé e Marcos"], "correta": 2, "dica": "Atos 18:26"}, {"pergunta": "Qual comandante sírio foi curado da lepra?", "opcoes": ["Ben-Hadade", "Senaqueribe", "Naamã", "Hamã"], "correta": 2, "dica": "2 Reis 5:11"}, {"pergunta": "Qual discípulo era chamado de médico amado?", "opcoes": ["Marcos", "Lucas", "Tito", "Filipe"], "correta": 1, "dica": "Colossenses 4:14"}, {"pergunta": "Qual rei foi advertido pelo profeta Micaías antes de morrer?", "opcoes": ["Onri", "Jeú", "Acabe", "Jeroboão"], "correta": 2, "dica": "1 Reis 22:28"}, {"pergunta": "Quem foi o rei da Judeia durante o nascimento de João Batista?", "opcoes": ["Herodes", "César Augusto", "Pilatos", "Arquelau"], "correta": 0, "dica": "Lucas 1:5"}, {"pergunta": "Quem continuou orando três vezes ao dia mesmo sob decreto real?", "opcoes": ["Neemias", "Daniel", "Jeremias", "Esdras"], "correta": 1, "dica": "Daniel 6:10"}, {"pergunta": "Qual juiz fez um voto precipitado antes da batalha?", "opcoes": ["Gideão", "Sansão", "Jefté", "Otniel"], "correta": 2, "dica": "Juízes 11:30"}, {"pergunta": "Qual rei ficou leproso por queimar incenso?", "opcoes": ["Asa", "Acaz", "Uzias", "Manassés"], "correta": 2, "dica": "2 Crônicas 26:19"}, {"pergunta": "Qual foi a rainha que perdeu sua coroa por haver encorajado as mulheres a desprezarem", "opcoes": ["Atalia", "Jezabel", "Vasti", "Ester"], "correta": 2, "dica": "Ester 1:16-22"}, {"pergunta": "Quem foi o sacerdote que apoiou Adonias em vez de Salomão?", "opcoes": ["Zadoque", "Abiatar", "Hilquias", "Fineias"], "correta": 1, "dica": "1 Reis 1:7"}, {"pergunta": "Na casa de quem a Arca trouxe bênçãos durante três meses?", "opcoes": ["Barzilai", "Obede-Edom", "Husai", "Zadoque"], "correta": 1, "dica": "2 Samuel 6:11"}, {"pergunta": "Qual profeta confrontou o rei Acabe após a morte de Nabote?", "opcoes": ["Eliseu", "Elias", "Micaías", "Natã"], "correta": 1, "dica": "1 Reis 21:17-19"}, {"pergunta": "Quem foi o escriba que liderou um grupo de exilados de volta a Jerusalém?", "opcoes": ["Neemias", "Esdras", "Zorobabel", "Ageu"], "correta": 1, "dica": "Esdras 7:10"}, {"pergunta": "Quem foi um dos que reconstruiu o altar antes da reconstrução do templo?", "opcoes": ["Neemias", "Esdras", "Zorobabel", "Josué"], "correta": 2, "dica": "Esdras 3:2"}, {"pergunta": "Qual amigo de Paulo quase morreu por causa da obra de Cristo?", "opcoes": ["Tito", "Epafrodito", "Lucas", "Silas"], "correta": 1, "dica": "Filipenses 2:25 -27"}, {"pergunta": "Quem era o escravo mencionado na carta a Filemom?", "opcoes": ["Demas", "Onésimo", "Tíquico", "Aristarco"], "correta": 1, "dica": "Filemom 1:10"}, {"pergunta": "Quem levou a carta aos Colossenses junto com Onésimo?", "opcoes": ["Timóteo", "Tíquico", "Tito", "Lucas"], "correta": 1, "dica": "Colossenses 4:7-9"}, {"pergunta": "Qual homem retirou Jeremias da cisterna onde estava preso?", "opcoes": ["Baruque", "Gedalias", "Jeremias", "Ebed-Meleque"], "correta": 3, "dica": "Jeremias 38:12"}, {"pergunta": "Quem foi o secretário que escreveu as palavras de Jeremias?", "opcoes": ["Seraías", "Baruque", "Esdras", "Hilquias"], "correta": 1, "dica": "Jeremias 36:4"}, {"pergunta": "Qual profeta foi contemporâneo de Ageu e incentivou a reconstrução do templo?", "opcoes": ["Zacarias", "Joel", "Amós", "Naum"], "correta": 0, "dica": "Esdras 5:1"}, {"pergunta": "Quem era a mãe de João Marcos?", "opcoes": ["Priscila", "Maria", "Ana", "Madalena"], "correta": 1, "dica": "Atos 12:12"}, {"pergunta": "Quem aconselhou Absalão a perseguir Davi imediatamente?", "opcoes": ["Husai", "Aitofel", "Joabe", "Abiatar"], "correta": 1, "dica": "2 Samuel 17:1"}, {"pergunta": "No reinado de qual rei o Livro da Lei foi encontrado durante reformas no templo?", "opcoes": ["Ezequias", "Josias", "Manassés", "Asa"], "correta": 1, "dica": "2 Reis 22:8"}, {"pergunta": "Quem era o companheiro de viagem de Paulo chamado de médico amado?", "opcoes": ["Lucas", "Tito", "Silas", "Timóteo"], "correta": 0, "dica": "Colossenses 4:14"}, {"pergunta": "Qual juiz era canhoto?", "opcoes": ["Gideão", "Eúde", "Jefté", "Sansão"], "correta": 1, "dica": "Juízes 3:15"}, {"pergunta": "Qual é o profeta que fala de meninos e de meninas brincando nas ruas?", "opcoes": ["Elias", "Eliseu", "Zacarias", "Amós"], "correta": 2, "dica": "Zacarias. 8:5"}, {"pergunta": "Quem era o pai de Matusalém?", "opcoes": ["Noé", "Enoque", "Lameque", "Jarede"], "correta": 1, "dica": "Gênesis 5:21"}, {"pergunta": "Quem sucedeu Elias como principal profeta em Israel?", "opcoes": ["Eliseu", "Micaías", "Joel", "Natã"], "correta": 0, "dica": "2 Reis 2:15"}, {"pergunta": "Qual discípulo era conhecido por duvidar?", "opcoes": ["Filipe", "Tomé", "André", "Bartolomeu"], "correta": 1, "dica": "João 20:27"}, {"pergunta": "Quem lamentou o filho doente, mas se calou quando a criança morreu?", "opcoes": ["Davi", "Absalão", "Saul", "Josias"], "correta": 0, "dica": ""}, {"pergunta": "Qual rei teve um sonho sobre uma grande estátua interpretada por Daniel?", "opcoes": ["Dario", "Belsazar", "Nabucodonosor", "Ciro"], "correta": 2, "dica": "Daniel 2:1"}, {"pergunta": "Quem era o sobrinho de Barnabé?", "opcoes": ["Timóteo", "João Marcos", "Lucas", "Tito"], "correta": 1, "dica": "Colossenses 4:10"}, {"pergunta": "Quem ficou cego no caminho de Damasco?", "opcoes": ["Pedro", "Saulo", "Barnabé", "Silas"], "correta": 1, "dica": "Atos 9:8"}, {"pergunta": "Quem foi o rei que tentou matar o menino Jesus?", "opcoes": ["Herodes", "César Augusto", "Pilatos", "Arquelau"], "correta": 0, "dica": "Mateus 2:16"}]};
+const ACCESS_PASSWORD = "2027";
+const MAINTENANCE_PASSWORD = "1970";
+const KEY_NAME = "ctes_mobile_nome_final_v1";
+const KEY_PROGRESS = "ctes_mobile_progresso_final_v1";
+const audioOk = new Audio("som-acerto.mp3");
+const audioBad = new Audio("som-erro.mp3");
+const audioFinal = new Audio("som-final.mp3");
+[audioOk,audioBad,audioFinal].forEach(a=>{a.preload="auto";a.volume=.65});
 
+let playerName = localStorage.getItem(KEY_NAME) || "";
+let progress = loadProgress();
+let level = null, questions = [], index = 0, score = 0, hits = 0, answered = false, hintUsed = false;
+let timer = null, seconds = 300;
 
-      <div id="painel-dica" class="painel-dica oculto"></div>
-    </section>
+function defaults(){return {facil:true,medio:false,dificil:false,doneFacil:false,doneMedio:false,doneDificil:false}}
+function loadProgress(){try{return Object.assign(defaults(),JSON.parse(localStorage.getItem(KEY_PROGRESS)||"{}"))}catch(e){return defaults()}}
+function saveProgress(){localStorage.setItem(KEY_PROGRESS,JSON.stringify(progress))}
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active")}
+function cleanName(v){return v.trim().replace(/\s+/g," ").split(" ").slice(0,6).map(p=>p?p[0].toUpperCase()+p.slice(1).toLowerCase():"").join(" ")}
+function play(a){try{a.currentTime=0;a.play().catch(()=>{})}catch(e){}}
 
-    <section id="tela-resultado" class="tela">
-      <div class="card central resultado">
-        <h1 id="resultado-titulo">🏆 Fim de Jogo!</h1>
-        <div id="resultado-corpo"></div>
-        <button class="botao botao-ouro" id="btn-jogar-novamente">🔄 Jogar Novamente</button>
-        <button class="botao botao-azul" id="btn-menu-final">🏠 Menu Principal</button>
-      </div>
-    </section>
-  </main>
+function openLogin(){
+  playerName=localStorage.getItem(KEY_NAME)||"";
+  document.getElementById("nameGroup").style.display=playerName?"none":"block";
+  document.getElementById("loginTitle").textContent=playerName?"Bem-vindo de volta":"Cadastro do Jogador";
+  document.getElementById("loginText").textContent=playerName?playerName:"Informe seu nome e sobrenome para personalizar a jornada.";
+  document.getElementById("nameInput").value="";
+  document.getElementById("passwordInput").value="";
+  document.getElementById("loginError").textContent="";
+  show("login");
+}
+function login(){
+  const pass=document.getElementById("passwordInput").value;
+  if(pass!==ACCESS_PASSWORD){document.getElementById("loginError").textContent="Senha incorreta.";return}
+  if(!playerName){
+    const n=cleanName(document.getElementById("nameInput").value);
+    if(n.split(" ").length<2){document.getElementById("loginError").textContent="Digite nome e sobrenome.";return}
+    playerName=n;localStorage.setItem(KEY_NAME,n);
+  }
+  document.getElementById("welcomeName").textContent=playerName;
+  show("welcome");
+}
 
-  <div id="modal-login" class="modal oculto modal-login-visual">
-    <div class="modal-card modal-card-login">
-      <h2>🔐 Acesso à Jornada</h2>
-      <p>Digite CPF e código de acesso.</p>
-      <label>CPF</label>
-      <input id="cpf-acesso" type="text" placeholder="Digite seu CPF" maxlength="14" />
-      <label>Código de acesso</label>
-      <input id="codigo-acesso" type="password" placeholder="Digite seu código" />
-      <p id="erro-login" class="erro oculto">CPF ou código inválido.</p>
-      <button class="botao botao-ouro" id="btn-login-entrar">▶ Entrar</button>
-      <button class="botao botao-neutro" data-fechar="modal-login">← Voltar</button>
-    </div>
-  </div>
+function openPhases(){
+  document.getElementById("phasePlayer").textContent="Jogador: "+playerName;
+  document.getElementById("stateFacil").textContent =
+    progress.doneFacil ? "✓ Concluída" : "Disponível";
+  document.getElementById("stateMedio").textContent =
+    !progress.medio ? "🔒 Bloqueada" : (progress.doneMedio ? "✓ Concluída" : "Disponível");
+  document.getElementById("stateDificil").textContent =
+    !progress.dificil ? "🔒 Bloqueada" : (progress.doneDificil ? "✓ Concluída" : "Disponível");
+  show("phases");
+}
 
-  <section id="tela-modo" class="tela">
-    <!-- Tela inteira: Modo de Jogo.
-         A imagem de fundo vem do CSS: modo-de-jogo-v2.png.
-         Os botões abaixo são áreas clicáveis sobre a arte. -->
-    <div class="modo-botoes-invisiveis">
-     <button class="modo-hotspot modo-individual" id="btn-individual" aria-label="Jogar no modo individual">
-  <span>👤</span>
-  <strong>Individual</strong>
-  <small>1 jogador</small>
-</button>
+function tocarPortal(nivel){
+  if(!progress[nivel]){
+    alert("Esta fase ainda está bloqueada.");
+    return;
+  }
+  startPhase(nivel);
+}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function prep(level){return shuffle(QUESTIONS[level]).map(q=>({...q,fixed:shuffle(q.opcoes.map((t,i)=>({text:t,correct:i===q.correta})))}))}
+function startPhase(l){
+  if(!progress[l])return;
+  level=l;questions=prep(l);index=0;score=0;hits=0;answered=false;seconds=300;
+  const g=document.getElementById("game");g.className="screen safe active phase-"+l;
+  document.getElementById("hudName").textContent=playerName;
+  startTimer();render();
+}
+function label(){return level==="facil"?"Fase 1":level==="medio"?"Fase 2":"Fase 3"}
+function render(){
+  answered=false;hintUsed=false;
+  const q=questions[index];
+  document.getElementById("hudPhase").textContent=label();
+  document.getElementById("hudProgress").textContent=`Pergunta ${index+1}/50`;
+  updateHud();
+  document.getElementById("questionText").textContent=q.pergunta;
+  const box=document.getElementById("options");box.innerHTML="";
+  ["A","B","C","D"].forEach((letter,i)=>{
+    const o=q.fixed[i],b=document.createElement("button");b.className="choice";b.textContent=`${letter}) ${o.text}`;b.onclick=()=>answer(i);box.appendChild(b);
+  });
+  document.getElementById("hint").style.display="none";
+  document.getElementById("hint").textContent="";
+  document.getElementById("feedback").textContent="";
+  document.getElementById("hintBtn").disabled=false;
+  document.getElementById("nextBtn").disabled=true;
+}
+function answer(i){
+  if(answered)return;answered=true;
+  const q=questions[index],buttons=[...document.querySelectorAll(".choice")];
+  buttons.forEach((b,j)=>{b.disabled=true;if(q.fixed[j].correct)b.classList.add("correct")});
+  if(q.fixed[i].correct){hits++;score+=hintUsed?800:1000;buttons[i].classList.add("correct");document.getElementById("feedback").textContent="Resposta correta!";play(audioOk)}
+  else{score-=1000;buttons[i].classList.add("wrong");document.getElementById("feedback").textContent="Resposta incorreta.";play(audioBad)}
+  updateHud();document.getElementById("nextBtn").disabled=false;
+}
+function useHint(){
+  if(hintUsed)return;hintUsed=true;
+  const h=document.getElementById("hint");h.textContent="Dica: "+questions[index].dica;h.style.display="block";
+  document.getElementById("hintBtn").disabled=true;
+}
+function nextQuestion(){if(!answered)return;if(index<questions.length-1){index++;render()}else finishPhase()}
+function finishPhase(){
+  stopTimer();
+  if(level==="facil"){progress.doneFacil=true;progress.medio=true;document.getElementById("phaseResultText").textContent=`${playerName}, você concluiu a Fase 1 com ${hits} acertos e ${score} pontos. A Fase 2 foi desbloqueada.`;saveProgress();show("phaseResult");return}
+  if(level==="medio"){progress.doneMedio=true;progress.dificil=true;document.getElementById("phaseResultText").textContent=`${playerName}, você concluiu a Fase 2 com ${hits} acertos e ${score} pontos. A Fase 3 foi desbloqueada.`;saveProgress();show("phaseResult");return}
+  progress.doneDificil=true;saveProgress();document.getElementById("finalName").textContent=playerName;play(audioFinal);show("final");
+}
+function exitPhase(){if(confirm("Deseja sair desta fase? O progresso desta fase será perdido.")){stopTimer();openPhases()}}
+function startTimer(){stopTimer();timer=setInterval(()=>{seconds--;updateHud();if(seconds<=0)finishPhase()},1000)}
+function stopTimer(){if(timer)clearInterval(timer);timer=null}
+function updateHud(){document.getElementById("hudScore").textContent=`Acertos: ${hits} · ${score} pts`;document.getElementById("hudTime").textContent=`Tempo: ${String(Math.floor(seconds/60)).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`}
+function playAgain(){progress=defaults();saveProgress();openPhases()}
 
-<button class="modo-hotspot modo-grupal" id="btn-grupal" aria-label="Jogar no modo grupal">
-  <span>👥</span>
-  <strong>Grupal</strong>
-  <small>2 ou 3 jogadores</small>
-</button>
+/* manutenção: 7 toques no diamante da primeira capa */
+let taps=0,tapTimer=null;
+document.getElementById("maintenanceTap").addEventListener("click",e=>{e.preventDefault();e.stopPropagation();taps++;clearTimeout(tapTimer);tapTimer=setTimeout(()=>taps=0,3500);if(taps>=7){taps=0;openMaintenance()}});
+function openMaintenance(){document.getElementById("maintenance").classList.add("open");document.getElementById("maintenancePassword").value="";document.getElementById("maintenanceError").textContent="";document.getElementById("maintenanceActions").style.display="none"}
+function closeMaintenance(){document.getElementById("maintenance").classList.remove("open")}
+function maintenanceLogin(){if(document.getElementById("maintenancePassword").value!==MAINTENANCE_PASSWORD){document.getElementById("maintenanceError").textContent="Senha inválida.";return}document.getElementById("maintenanceActions").style.display="block";document.getElementById("maintenanceError").textContent=""}
+function clearDevice(){if(!confirm("Apagar nome e progresso deste aparelho?"))return;localStorage.removeItem(KEY_NAME);localStorage.removeItem(KEY_PROGRESS);alert("Cadastro removido.");location.reload()}
 
-    <button class="modo-voltar" id="btn-voltar-menu-modo" aria-label="Voltar ao menu principal">← Voltar</button>
-    </div>
-  </section>
-
-  <div id="modal-grupal" class="modal oculto">
-    <div class="modal-card">
-      <h2>👥 Jogadores</h2>
-      <p>Digite pelo menos 2 nomes.</p>
-      <label>Jogador 1 *</label><input id="nome-j1" maxlength="20" placeholder="Nome do Jogador 1" />
-      <label>Jogador 2 *</label><input id="nome-j2" maxlength="20" placeholder="Nome do Jogador 2" />
-      <label>Jogador 3</label><input id="nome-j3" maxlength="20" placeholder="Opcional" />
-      <button class="botao botao-ouro" id="btn-iniciar-grupal">▶ Iniciar</button>
-      <button class="botao botao-neutro" data-fechar="modal-grupal">← Voltar</button>
-    </div>
-  </div>
-
-  <div id="modal-regras" class="modal oculto">
-    <div class="modal-card modal-grande">
-      <h2>📋 Regras do Jogo</h2>
-      <div class="regras">
-        <p><strong>Objetivo:</strong> acumular pontos respondendo perguntas culturais.</p>
-        <p><strong>Rodada:</strong> cada jogador tem 5 minutos.</p>
-        <p><strong>Pontuação:</strong> acerto sem dica +1000, acerto com dica +800, erro -1000.</p>
-        <p><strong>Dicas:</strong> 2 dicas por rodada.</p>
-        <p><strong>Troca:</strong> 1 troca de categoria por rodada.</p>
-        <p><strong>Grupal:</strong> os jogadores se alternam e o ranking aparece no final.</p>
-      </div>
-      <button class="botao botao-neutro" data-fechar="modal-regras">✕ Fechar</button>
-    </div>
-  </div>
-
-  <div id="modal-feedback" class="modal oculto">
-    <div class="modal-card feedback">
-      <div id="feedback-icone" class="feedback-icone"></div>
-      <h2 id="feedback-msg"></h2>
-      <p id="feedback-pts"></p>
-      <button class="botao botao-ouro" id="btn-proxima">Próxima →</button>
-    </div>
-  </div>
-
-  <img class="marca-dagua-global" src="logo-marca-2.png" alt="Diná Moraes" onerror="this.style.display='none'" />
-
-  <script src="js/perguntas.js"></script>
-  <script src="js/script.js"></script>
+document.getElementById("passwordInput").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+</script>
 </body>
 </html>
