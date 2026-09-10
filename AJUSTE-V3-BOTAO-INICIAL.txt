@@ -1,0 +1,5 @@
+ENTRE MUNDOS — V3
+Ajuste realizado:
+- Área clicável do botão INICIAR JORNADA foi deslocada para baixo.
+- Área de toque no celular foi levemente ampliada para facilitar o clique.
+- Todos os demais arquivos, imagens, áudios, perguntas, CSS e JavaScript foram preservados.

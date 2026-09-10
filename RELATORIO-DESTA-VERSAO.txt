@@ -1,0 +1,37 @@
+ENTRE MUNDOS — VERSÃO RESPONSIVA FINAL
+Data: 10/09/2026
+
+BASE
+- Criada a partir da pasta completa "ENTRE MUNDOS.zip" enviada pela usuária.
+- As imagens originais foram preservadas.
+- Os três áudios originais foram preservados.
+
+COMPATIBILIDADE
+- Computadores Windows e Mac: navegador moderno.
+- Android e iPhone: layout responsivo e controles por toque.
+- Tablets: layout intermediário responsivo.
+- O jogo usa uma única versão; não é necessário manter um pacote separado para celular e outro para computador.
+
+BANCO DE PERGUNTAS
+- 360 perguntas no total.
+- 6 categorias com 60 perguntas cada.
+- 4 alternativas por pergunta.
+- Distribuição equilibrada da resposta correta em cada categoria: 15 A, 15 B, 15 C e 15 D.
+- Foram reaplicadas as correções já feitas anteriormente nas categorias Comidas e Culturas, Conhecimento Bíblico, Conhecimentos Gerais, Geografia e Natureza, Invenções do Brasil e do Mundo e Perrengues Culturais.
+- Conferida a questão do chá: resposta correta = "Chá".
+  Pergunta: "Qual bebida é tradicionalmente associada ao Reino Unido e ao costume conhecido como 'chá da tarde'?"
+
+RESPONSIVIDADE
+- Removido o bloqueio global de rolagem vertical para evitar cortes em telas baixas.
+- Adaptação das artes para preencher telas de proporções diferentes, preservando o centro da composição.
+- Grade de categorias: 3 colunas em telas grandes, 2 em tablets/celulares.
+- Alternativas: 2 colunas em telas largas e 1 coluna em celulares verticais.
+- Controles e modais redimensionados para toque.
+- Inputs configurados com tamanho adequado para evitar zoom automático no iPhone.
+- Ajustes para modo paisagem em aparelhos com pouca altura.
+
+VALIDAÇÕES TÉCNICAS
+- js/perguntas.js: sintaxe JavaScript validada.
+- js/script.js: sintaxe JavaScript validada.
+- Todos os arquivos de imagem referenciados pelo HTML/CSS foram encontrados.
+- Banco validado: 360/360 perguntas com 4 alternativas e índice de resposta válido.

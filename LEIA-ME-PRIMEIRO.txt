@@ -1,0 +1,20 @@
+ENTRE MUNDOS — VERSÃO UNIVERSAL COMPLETA V2
+
+Esta pasta contém TODOS os arquivos do jogo para manutenção futura:
+- index.html
+- css/style.css
+- js/script.js
+- js/perguntas.js
+- 14 imagens PNG
+- 3 arquivos de áudio MP3
+- relatório da versão
+
+IMPORTANTE:
+1. Mantenha todos os arquivos e pastas juntos.
+2. Para testar no computador, abra index.html.
+3. Não mova css/ ou js/ para fora desta pasta.
+4. Esta V2 corrige a área clicável do botão INICIAR JORNADA da capa.
+5. O layout é responsivo para computador, Mac, tablet, iPad, Android e iPhone.
+6. O banco contém 360 perguntas revisadas, incluindo a questão do chá.
+
+Guarde o ZIP original recebido como backup e use esta V2 para os próximos testes.

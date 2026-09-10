@@ -1,0 +1,7 @@
+ENTRE MUNDOS — VERSÃO RESPONSIVA
+
+Abra o arquivo index.html para iniciar o jogo.
+Não retire arquivos das pastas css ou js e não renomeie as imagens ou áudios.
+Esta versão foi organizada para computador Windows/Mac, tablet, Android e iPhone.
+
+Consulte RELATORIO-DESTA-VERSAO.txt para ver as correções e validações realizadas.
