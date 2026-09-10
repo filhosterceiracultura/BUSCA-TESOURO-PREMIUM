@@ -1,0 +1,1 @@
+Estrutura de recursos da versão Mobile. As imagens principais estão em ../img e os sons na raiz.

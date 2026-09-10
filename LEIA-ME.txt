@@ -1,0 +1,14 @@
+CAÇA AO TESOURO DAS ESCRITURAS — MOBILE
+
+Esta é a pasta expandida a partir do arquivo HTML completo enviado.
+Arquivo principal: index.html
+Imagens extraídas: 12 (pasta img)
+Áudios extraídos: 3 (raiz)
+
+Pastas:
+- img: imagens utilizadas pelo jogo
+- assets: reservada para recursos adicionais do projeto
+- CORREGIDAS: reservada para versões corrigidas/edições
+
+Para testar, abra index.html no navegador.
+Guarde esta pasta inteira; não mova somente o index.html, pois agora as imagens e sons estão em arquivos separados.
